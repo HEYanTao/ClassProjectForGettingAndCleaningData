@@ -1,4 +1,4 @@
-##This is for the coursera getting and cleanning data course project.
+##This is for the coursera getting and cleanning data course project. 
 ##This program mainly focus on getting tidy and usable data from real-life raw data.
 
 
