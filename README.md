@@ -33,7 +33,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
   tempdata2<-read.table("./UCI HAR Dataset/test/y_test.txt")  
   y<-rbind(tempdata1,tempdata2)  
 
-* Second step
+* Second step  
 Using grep() to find qualified features and use names() to name those features  
 The code is here  
  feature<-read.table("./UCI HAR Dataset/features.txt")  
