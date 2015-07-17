@@ -17,29 +17,29 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
  * 4.Label the data set properly
  * 5.Create a new dataset with the average of each variable for each activity and each subject.
  
- * First step \n
- First, the program reads in two tabels from train and test data, using read.tabel()
- Second, merge them by rbind() and apply this procedure to x,y and subject respectively
- The code is here:
-tempdata1<-read.table("./UCI HAR Dataset/train/X_train.txt")
-tempdata2<-read.table("./UCI HAR Dataset/test/x_test.txt")
-x<-rbind(tempdata1,tempdata2)
+ * First step  
+ First, the program reads in two tabels from train and test data, using read.tabel()  
+ Second, merge them by rbind() and apply this procedure to x,y and subject respectively   
+ The code is here:  
+ tempdata1<-read.table("./UCI HAR Dataset/train/X_train.txt")  
+ tempdata2<-read.table("./UCI HAR Dataset/test/x_test.txt")  
+ x<-rbind(tempdata1,tempdata2)  
 
-tempdata1<-read.table("./UCI HAR Dataset/train/subject_train.txt")
-tempdata2<-read.table("./UCI HAR Dataset/test/subject_test.txt")
-subject<-rbind(tempdata1,tempdata2)
+  tempdata1<-read.table("./UCI HAR Dataset/train/subject_train.txt")  
+  tempdata2<-read.table("./UCI HAR Dataset/test/subject_test.txt")  
+  subject<-rbind(tempdata1,tempdata2)  
 
-tempdata1<-read.table("./UCI HAR Dataset/train/y_train.txt")
-tempdata2<-read.table("./UCI HAR Dataset/test/y_test.txt")
-y<-rbind(tempdata1,tempdata2)
+  tempdata1<-read.table("./UCI HAR Dataset/train/y_train.txt")  
+  tempdata2<-read.table("./UCI HAR Dataset/test/y_test.txt")  
+  y<-rbind(tempdata1,tempdata2)  
 
 * Second step
-Using grep() to find qualified features and use names() to name those features
-The code is here
-feature<-read.table("./UCI HAR Dataset/features.txt")
-qualifiedMeasurements<-grep("mean|std",feature[,2])
-extractx<-x[,qualifiedMeasurements]
-names(extractx)<-feature[qualifiedMeasurements,2]
+Using grep() to find qualified features and use names() to name those features  
+The code is here  
+ feature<-read.table("./UCI HAR Dataset/features.txt")  
+ qualifiedMeasurements<-grep("mean|std",feature[,2])  
+ extractx<-x[,qualifiedMeasurements]  
+ names(extractx)<-feature[qualifiedMeasurements,2]
 
 * Third step
 Name the activities properly. Notice that we are going to rename those features in order to make them easier to understand in step four.
