@@ -47,7 +47,7 @@ The code is here
 activities<-read.table("./UCI HAR Dataset/activity_labels.txt")
 y[,1]<-activities[y[,1],2]
 
-*Fourth step
+* Fourth step
 Using gsub() to make the variable name easier to understand. Using write.table() to output the result.
 The code is here:
 names(subject)<-"subject"
@@ -59,7 +59,7 @@ names(tidydata)<-gsub("--","-",names(tidydata))
 names(tidydata)<-gsub("-$","",names(tidydata))
 write.table(tidydata,"./tidy_data.txt",row.name=FALSE)
 
-*Fifth step
+* Fifth step
 First, we take out the number of activities and columns of the new independent dataset and stock them in variables like num.activity and num.col
 Second, we make a loop to create the new dataset.We take out the qualified data and calculate the mean of them.
 Third, using order() function to make the dataset looks more comfortable
