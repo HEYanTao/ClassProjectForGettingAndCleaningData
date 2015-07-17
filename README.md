@@ -17,7 +17,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
  * 4.Label the data set properly
  * 5.Create a new dataset with the average of each variable for each activity and each subject.
  
- * First step
+ * First step \n
  First, the program reads in two tabels from train and test data, using read.tabel()
  Second, merge them by rbind() and apply this procedure to x,y and subject respectively
  The code is here:
