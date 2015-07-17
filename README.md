@@ -48,41 +48,41 @@ activities<-read.table("./UCI HAR Dataset/activity_labels.txt")
 y[,1]<-activities[y[,1],2]
 
 * Fourth step
-Using gsub() to make the variable name easier to understand. Using write.table() to output the result.
-The code is here:
-names(subject)<-"subject"
-subject<-subject[,1]
-names(y)<-"activity"
-tidydata<-cbind(subject,y,extractx)
-names(tidydata)<-gsub("\\(\\)","-",names(tidydata))
-names(tidydata)<-gsub("--","-",names(tidydata))
-names(tidydata)<-gsub("-$","",names(tidydata))
-write.table(tidydata,"./tidy_data.txt",row.name=FALSE)
+Using gsub() to make the variable name easier to understand. Using write.table() to output the result.  
+The code is here:  
+names(subject)<-"subject"  
+subject<-subject[,1]  
+names(y)<-"activity"  
+tidydata<-cbind(subject,y,extractx)  
+names(tidydata)<-gsub("\\(\\)","-",names(tidydata))  
+names(tidydata)<-gsub("--","-",names(tidydata))  
+names(tidydata)<-gsub("-$","",names(tidydata))  
+write.table(tidydata,"./tidy_data.txt",row.name=FALSE)  
 
 * Fifth step
-First, we take out the number of activities and columns of the new independent dataset and stock them in variables like num.activity and num.col
-Second, we make a loop to create the new dataset.We take out the qualified data and calculate the mean of them.
-Third, using order() function to make the dataset looks more comfortable
-Finally, output the dataset using write.table() 
+First, we take out the number of activities and columns of the new independent dataset and stock them in variables like num.activity and num.col  
+Second, we make a loop to create the new dataset.We take out the qualified data and calculate the mean of them.  
+Third, using order() function to make the dataset looks more comfortable  
+Finally, output the dataset using write.table()   
 
-The code is here
-activity<-unique(activities)
-num.activity<-dim(activity)[1]
-subject<-unique(tidydata$subject)
-num.subject<-length(subject)
-num.col<-dim(tidydata)[2]
-num.total<-num.activity*num.subject
-independentData<-tidydata[1:num.total,]
-for (s in 1:num.subject) 
-{
-      for (a in 1:num.activity) 
-      {
-            r=a+(s-1)*num.activity
-            independentData[r,1]=subject[s]
-            independentData[r,2]=activity[a,2]
-            qualifiedData <- tidydata[tidydata$subject==s & tidydata$activity==activity[a,2], ]
-            independentData[r,3:num.col]=colMeans(qualifiedData[,3:num.col])
-      }
-}
-independentData<-independentData[order(independentData$subject,independentData$activity),]
-write.table(independentData,"./independent_tidy_data.txt",row.name=FALSE)
+The code is here  
+activity<-unique(activities)  
+num.activity<-dim(activity)[1]  
+subject<-unique(tidydata$subject)  
+num.subject<-length(subject)  
+num.col<-dim(tidydata)[2]  
+num.total<-num.activity*num.subject  
+independentData<-tidydata[1:num.total,]  
+for (s in 1:num.subject)   
+{  
+      for (a in 1:num.activity)   
+      {  
+            r=a+(s-1)*num.activity  
+            independentData[r,1]=subject[s]  
+            independentData[r,2]=activity[a,2]  
+            qualifiedData <- tidydata[tidydata$subject==s & tidydata$activity==activity[a,2], ]  
+            independentData[r,3:num.col]=colMeans(qualifiedData[,3:num.col])  
+      }  
+}  
+independentData<-independentData[order(independentData$subject,independentData$activity),]  
+write.table(independentData,"./independent_tidy_data.txt",row.name=FALSE)  
